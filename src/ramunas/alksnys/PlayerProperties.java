@@ -3,7 +3,7 @@ package ramunas.alksnys;
 import java.util.List;
 
 public interface PlayerProperties {
-	
+
 	public void setPoints(int points);
 
 	public int getPoints();
@@ -17,4 +17,6 @@ public interface PlayerProperties {
 	public void setStatus(boolean status);
 
 	public boolean getStatus();
+
+	public void setWinStatus(boolean winStatus);
 }

@@ -38,18 +38,6 @@ public class Player extends CasinoHumanTemp implements MoneyAccount {
 		setClearCards();
 	}
 
-	// public boolean checkIfWon() {
-	// return calcPoints().size() == 1 && calcPoints().get(0) == 21;
-	// }
-	//
-	// public void getHighestPoints() {
-	// setPoints(Collections.max(calcPoints()));
-	// }
-	//
-	// public boolean checkIfBusted() {
-	// return Collections.min(calcPoints()) > 21;
-	// }
-
 	public String toString() {
 		return ("Zaidejas " + getName() + " saskaitoje turi " + account.getBalance());
 	}

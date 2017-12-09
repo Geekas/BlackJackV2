@@ -18,4 +18,9 @@ public class PlayerData {
 	public List<Player> getList(){
 		return playerList;
 	}
+	public void resetAll(){
+		for (Player player: playerList){
+			player.reset();
+		}
+	}
 }

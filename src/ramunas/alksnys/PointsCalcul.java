@@ -18,7 +18,7 @@ public class PointsCalcul {
 
 	private LinkedList<String> cardListValues = new LinkedList<String>(Arrays.asList(cards));
 
-	public PlayerProperties calculatePoints(PlayerProperties person) {
+	public List<Integer> calculatePoints(PlayerProperties person) {
 		List<String> cards = person.getCards();
 		if (doesContainA(cards)) {
 			for (String card : cards) {
@@ -59,7 +59,24 @@ public class PointsCalcul {
 		// System.out.println("Pries: " + Arrays.toString(points.toArray()));
 		checkPoints();
 		// System.out.println("Po:" + Arrays.toString(points.toArray()));
-		return person;
+		return points;
+	}
+
+	public void getStatus(PlayerProperties person) {
+		List<Integer> playerPoints = calculatePoints(person);
+		if (playerPoints.get(0) == 21) {
+			person.setPoints(21);
+			person.setWinStatus(true);
+			System.out.println(Consts.playerWin);
+		}
+		else if (Collections.min(playerPoints)>21){
+			System.out.println(Consts.lose);
+			person.setStatus(true);
+		}
+	}
+
+	public void getHighestPoints(PlayerProperties person) {
+		person.setPoints(Collections.max(calculatePoints(person)));
 	}
 
 	private void checkPoints() {

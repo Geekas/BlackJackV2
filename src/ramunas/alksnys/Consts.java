@@ -11,9 +11,9 @@ public final class Consts {
 	public static final int maxPoints = 21;
 	public static final int minPoints = 16;
 	public static final String noClue = "I have no clue what happended";
-	public static final String win = "Laimejo";
-	public static final String even = "Lygiosios";
-	public static final String lose = "Pralaimejo";
+	public static final String win = "win";
+	public static final String even = "even";
+	public static final String lose = "You have lost";
 	public static final String errorNegative = "Prideti negalima neigiamu skaiciu.";
 	public static final String errorMinus = "Negalima deti neigiamu zenklu";
 	public static final String errorPosNum = "Only positives numbers allowed and more than 0";
@@ -34,4 +34,5 @@ public final class Consts {
 	public static final String whatBet = " kiek norite statyti?";
 	public static final String exitMeniu = "Jei norite zaisti dar karta press Y, jei baigti Q";
 	public static final String regMess = "Wellcome to Black Jack. Player registration starts. Please enter player number: ";
+	public static final String playerWin = "You won, you got 21";
 }

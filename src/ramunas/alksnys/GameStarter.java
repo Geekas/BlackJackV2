@@ -1,6 +1,7 @@
 package ramunas.alksnys;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class GameStarter {
 	private Player player;
@@ -8,28 +9,40 @@ public class GameStarter {
 	private PlayerRegistration registPlayers;
 	private Dealer dealer;
 	private GameBrains brains;
-//	private PCalcul pCalcul;
-//	private WinnerFinder winFinder;
-//	private Monitor monitor;	
+	private WinnerFinder winnerFinder;
+	private TakeBetsFromPlayers takeBets;
+	private AccountManagment accMan;
+	private Scanner userInput;
+
 	public GameStarter() {
+		userInput = new Scanner(System.in);
 		playerData = new PlayerData();
+		takeBets = new TakeBetsFromPlayers();
+		accMan = new AccountManagment();
 		start();
 	}
 
-	public static void main(String...args) {
+	public static void main(String... args) {
 		new GameStarter();
 	}
 
 	public void start() {
+		String command = "y";
 		registPlayers = new PlayerRegistration(playerData);
 		registPlayers.StartRegistration();
-		dealer = new Dealer("Tomas", playerData);
-		brains = new GameBrains(dealer);
-		brains.startDealing();
-//		List<Player> list = playerData.getList();
-//		for (Player player : list){
-//			System.out.println(player.getName());
-//		}
+		while (command.equalsIgnoreCase("y")) {
+			dealer = new Dealer("Tomas", playerData);
+			brains = new GameBrains(dealer);
+			takeBets.takingBets(playerData.getList());
+			brains.startDealing();
+			winnerFinder = new WinnerFinder(dealer, playerData.getList());
+			winnerFinder.showWinner();
+			System.out.println("If you want play again press Y/N");
+			command = userInput.nextLine();
+			playerData.resetAll();
+			dealer.reset();
+			accMan.checkAccount(playerData.getList());
+		}
 	}
 
 }
